@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :find_job, only: [:show, :edit, :update, :destroy]
 
   def index
-
+    @jobs = Job.all.order("created_at DESC")
   end
 
   def show
@@ -36,7 +36,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params_require(:job).permit(:title, :description, :company, :url)
+    params.require(:job).permit(:title, :description, :company, :url)
   end
 
   def find_job
