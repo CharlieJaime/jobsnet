@@ -6,7 +6,6 @@ class JobsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -23,15 +22,19 @@ class JobsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    if @job.update(job_params)
+      redirect_to @job
+    else
+      render "Edit"
+    end
   end
 
   def destroy
-
+    @job.destroy
+    redirect_to root_path
   end
 
   private
